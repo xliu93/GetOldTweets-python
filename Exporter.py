@@ -22,7 +22,6 @@ def main(argv):
 		opts, args = getopt.getopt(argv, "", ("username=", "near=", "within=", "since=", "until=", "querysearch=", "toptweets", "maxtweets=", "output="))
 
 		tweetCriteria = got.manager.TweetCriteria()
-		outputFileName = "output_got.csv"
 
 		for opt,arg in opts:
 			if opt == '--username':
@@ -55,7 +54,9 @@ def main(argv):
 			elif opt == '--output':
 				outputFileName = arg
 				
-		outputFile = codecs.open(outputFileName, "w+", "utf-8")
+		outputFileName = "/scratch/xl2053/tweets/output_"+tweetCriteria.username+".csv"
+		print(outputFileName)
+                outputFile = codecs.open(outputFileName, "w+", "utf-8")
 
 		outputFile.write('username;date;retweets;favorites;text;geo;mentions;hashtags;id;permalink')
 
